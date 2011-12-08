@@ -5,8 +5,9 @@ $(document).ready(function(){
   	var activity_data = new google.visualization.DataTable();
   	activity_data.addColumn('string', 'Date');
   	activity_data.addColumn('number', 'DAU');
+    var width = $("#activity_chart").width();
   	var activity_options = {
-  		width: '100%', height: 100,
+  		width: width, height: 100,
   		title: "dau: past 7 days",
   		legend: {position: 'none'},
   		chartArea: {width: '90%'}

@@ -13,16 +13,17 @@ $(document).ready(function(){
   };
   // data will update every second
   setInterval(function(){
-    getData('stats.app.users.total_count', '10min', '-10min', false, 'renderUserData');
-    getData('stats.activity.daily', '10min', 'midnight+today', false, 'renderTodaysData');
-    getData('stats.activity.daily', '10min', 'noon+yesterday', 'midnight+today', 'renderYesterdaysData');
-    getData('stats.activity.daily', '10min', '-2d', false, 'renderDailyData');    
-    getData('stats.activity.weekly.total', '24h', '-7d', false, 'renderWeeklyData');
-    getData('stats.activity.retention.weekly', '1d', '-7d', false,'renderWeeklyData');
+    getData('stats.app.users.total_count', '10min', '-10min', false, 'renderUserCount');
+    getData('stats.activity.daily', '10min', 'midnight+today', false, 'renderTodaysDAU');
+    getData('stats.activity.daily', '10min', 'noon+yesterday', 'midnight+today', 'renderYesterdaysDAU');
+    getData('stats.activity.weekly.total', '24h', '-7d', false, 'renderGrowthData');
+    getData('stats.activity.retention.weekly', '1d', '-7d', false,'renderRetentionData');
   }, 2000);
 });
 
-var renderTodaysData = function(d){
+
+/* callback functions run by getData() that render values */
+var renderTodaysDAU = function(d){
   if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.activity.daily, "10min")') ){ 
     $("#error").text("something is wrong with getting data, sorry dude.").show();
   }
@@ -30,7 +31,7 @@ var renderTodaysData = function(d){
   $("#today_dau_data").text(graphiteData.todays_dau);  
 };
 
-var renderYesterdaysData = function(d){
+var renderYesterdaysDAU = function(d){
   if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.activity.daily, "10min")') ){ 
     $("#error").text("something is wrong with getting data, sorry dude.").show();
   }
@@ -38,7 +39,7 @@ var renderYesterdaysData = function(d){
   $("#yesterday_dau_data").text(graphiteData.yesterdays_dau);
 };
 
-var renderUserData = function(d){
+var renderUserCount = function(d){
   if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.app.users.total_count, "10min")') ){ 
     $("#error").text("something is wrong with getting data, sorry dude.").show();
   }
@@ -47,24 +48,23 @@ var renderUserData = function(d){
   $("#total_users").text("total users: " + graphiteData.total_users);
 };
 
-var renderWeeklyData = function(d){
-  if (d.datapoints.length == 0){ $("#error").text("something is wrong with getting data, sorry dude."); }
-  var target = escape(d.target);
-  switch (target){
-    case escape('hitcount(stats.activity.weekly.total, "24h")'):
-      var thisWeek = d.datapoints[d.datapoints.length - 1][0] || 0;
-      var lastWeek = d.datapoints[1][0] || null;
-      var growth = (((thisWeek - lastWeek) / lastWeek )*100).toFixed(1);
-      window.graphiteData.dau_growth = growth;
-      $("#activity_growth").text(growth + " %");
-      break;
-    case escape('hitcount(stats.activity.retention.weekly, "1d")'):
-      window.graphiteData.retention = d.datapoints[0][0] || 0;
-      $("#retention_value").text(window.graphiteData.retention + " %");
-      break;
-    default:
-      $("#error").text("something went wrong with getting weekly data, sorry dude.");
+var renderGrowthData = function(d){
+  if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.activity.weekly.total, "24h")') ){ 
+    $("#error").text("something is wrong with getting data, sorry dude.").show();
   }
+  var thisWeek = d.datapoints[d.datapoints.length - 1][0] || 0;
+  var lastWeek = d.datapoints[1][0] || null;
+  var growth = (((thisWeek - lastWeek) / lastWeek )*100).toFixed(1);
+  window.graphiteData.dau_growth = growth;
+  $("#activity_growth").text(growth + " %");  
+};
+
+var renderRetentionData = function(d){
+  if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.activity.retention.weekly, "1d")') ){ 
+    $("#error").text("something is wrong with getting data, sorry dude.").show();
+  }
+  window.graphiteData.retention = d.datapoints[0][0] || 0;
+  $("#retention_value").text(window.graphiteData.retention + " %");
 };
 
 var getData = function(namespace, interval, from, until, callback){
