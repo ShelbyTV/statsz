@@ -18,7 +18,7 @@ $(document).ready(function(){
     getData('stats.activity.daily', '10min', 'noon+yesterday', 'midnight+today', 'renderYesterdaysDAU');
     getData('stats.activity.weekly.total', '24h', '-7d', false, 'renderGrowthData');
     getData('stats.activity.retention.weekly', '1d', '-7d', false,'renderRetentionData');
-  }, 2000);
+  }, 3000);
 });
 
 
