@@ -202,10 +202,17 @@ td { vertical-align: top; }
 
 
 /* ==|== primary styles =====================================================
-   Author: 
+   Author: Henry
    ========================================================================== */
 
-h1 { font-size: 30px; }
+body {
+  background: url(../img/dark-texture-bg.png), #252525;
+}
+
+h1 { 
+  color: white;
+  font-size: 30px;
+}
 h2 { font-size: 25px;  }
 h3 { font-size: 20px; }
 
@@ -216,17 +223,26 @@ h3 { font-size: 20px; }
   margin-top: 0;
   margin-bottom: 10px;
 }
+.underline {
+  text-decoration: underline;
+}
+
+a:visited { color: white;}
 
 #total_users {margin: 10px 0;}
 #daily_info { height: 450px;}
-
+.rounded {
+  -webkit-border-radius: 10px;
+}
 #activity {
+  background: url(../img/light-texture-bg.png);
   float: left;
   width: 40%;
   margin: 20px 5%;
   background: grey;
 }
 #engagment {
+  background: url(../img/light-texture-bg.png), #3A3A3A;
   float: right;
   width: 40%;
   margin: 20px 5%;  
@@ -286,6 +302,7 @@ h3 { font-size: 20px; }
 }
 
 footer {
+  color: white;
   text-align: center;
 }
 

@@ -44,10 +44,10 @@
     <div id="main" role="main">
 			
 			<!--  TODO: Run JS function to get latest count and append to id = total_users  -->
-			<h1 id="total_users" class="centered"> Total Users</h1>
+			<h1 id="total_users" class="centered underline"> Total Users</h1>
 			
 			<div id="daily_info">
-				<section id="activity">
+				<section id="activity" class="rounded">
 					<h2 class="centered">Daily Active Users</h2>
 					<div id="todays_dau" class="today bold">
 						<span class="small">today: </span> 
@@ -62,7 +62,7 @@
 					<div id="activity_growth" class="growth"></div>
 				</section>
 
-				<section id="engagment">
+				<section id="engagment" class="rounded">
 					<h2 class="centered">Daily Engaged Users</h2>
 					<!--  TODO: Run JS function to get latest count and append  -->
 					<div class="today bold">
@@ -79,13 +79,13 @@
 				</section>				
 			</div>
 			
-			<div id="retention">
+			<div id="retention" class="rounded">
 				<h3 class="centered tight">retention (week over week)</h3>
 				<div id="retention_value"></div>
 				<div id="retention_chart"></div>
 			</div>
 
-			<div id="session_length">
+			<div id="session_length" class="rounded">
 				<h3 class="centered tight">session length</h3>
 				<div id="session_length_value">
 					6:25
@@ -114,7 +114,7 @@
 		google.load("visualization", "1", {packages:["corechart"]});
 	</script>
   <!-- scripts concatenated and minified via ant build script-->
-  <script defer src="js/libs/graphite.js"></script>
+  <script defer src="js/libs/graphiteData.js"></script>
   <script defer src="js/libs/graphs_google.js"></script>
   <script defer src="js/plugins.js"></script>
   <script defer src="js/script.js"></script>

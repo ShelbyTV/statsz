@@ -3,7 +3,7 @@ $(document).ready(function(){
   function drawCharts() {
     /* activity_chart  */
   	var activity_data = new google.visualization.DataTable();
-  	//data.addColumn('string', 'Date');
+  	activity_data.addColumn('string', 'Date');
   	activity_data.addColumn('number', 'DAU');
   	var activity_options = {
   		width: '100%', height: 100,
@@ -18,7 +18,7 @@ $(document).ready(function(){
     requestLatestData('stats.activity.daily', '60min', '-7d', false, 'addActivityData');
     addActivityData = function(d){
       d.datapoints.forEach(function(e){
-        activity_data.addRow([e[0]/6]); // dividing by 6 because of interval of 60 min above (data passed to graphite every 10min)
+        activity_data.addRow([Date(e[1]),e[0]/6]); // dividing by 6 because of interval of 60 min above (data passed to graphite every 10min)
       });
     	activity_chart.draw(activity_data, activity_options);
     };
