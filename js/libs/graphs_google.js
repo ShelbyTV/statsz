@@ -15,10 +15,10 @@ $(document).ready(function(){
   	var activity_chart = new google.visualization.LineChart(document.getElementById('activity_chart'));
 
     // get data from graphite, iterate, pass into data via addRow
-    requestLatestData('stats.activity.daily', '60min', '-7d', false, 'addActivityData');
+    requestLatestData('stats.activity.daily', '10min', '-7d', false, 'addActivityData');
     addActivityData = function(d){
       d.datapoints.forEach(function(e){
-        activity_data.addRow([Date(e[1]),e[0]/6]); // dividing by 6 because of interval of 60 min above (data passed to graphite every 10min)
+        activity_data.addRow([Date(e[1]),e[0]]); // dividing by 6 because of interval of 60 min above (data passed to graphite every 10min)
       });
     	activity_chart.draw(activity_data, activity_options);
     };
