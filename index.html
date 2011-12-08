@@ -39,31 +39,31 @@
 
   <div id="container">
     <header>
-
+			<div id="error"></div>
     </header>
     <div id="main" role="main">
 			
 			<!--  TODO: Run JS function to get latest count and append to id = total_users  -->
-			<h1 id="total_users" class="centered underline"> Total Users</h1>
+			<h1 id="total_users" class="centered underline">welcome.</h1>
 			
 			<div id="daily_info">
 				<section id="activity" class="rounded">
-					<h2 class="centered">Daily Active Users</h2>
+					<h2 class="centered">daily active users</h2>
 					<div id="todays_dau" class="today bold">
-						<span class="small">today: </span> 
+						<span class="small">today: </span> <span id="today_dau_data"></span>
 					</div>
 					<div id="yesterdays_dau" class="yesterday">
-						<span class="small">yesterday: </span>
+						<span class="small">yesterday: </span> <span id="yesterday_dau_data"></span>
 					</div>
 					<div id="activity_chart">
 					</div>
 					
-					<h2 class="centered">% Growth <small>(weekly)</small>:</h2>
+					<h2 class="centered">% growth <small>(weekly)</small>:</h2>
 					<div id="activity_growth" class="growth"></div>
 				</section>
 
 				<section id="engagment" class="rounded">
-					<h2 class="centered">Daily Engaged Users</h2>
+					<h2 class="centered">daily engaged users</h2>
 					<!--  TODO: Run JS function to get latest count and append  -->
 					<div class="today bold">
 						<span class="small">today: </span>
@@ -74,7 +74,7 @@
 					<div id="engagment_chart">
 						graph
 					</div>
-					<h2 class="centered">% Growth <small>(weekly)</small>:</h2>
+					<h2 class="centered">% growth <small>(weekly)</small>:</h2>
 					<div id="engagment_growth" class="growth"></div>
 				</section>				
 			</div>

@@ -207,14 +207,22 @@ td { vertical-align: top; }
 
 body {
   background: url(../img/dark-texture-bg.png), #252525;
+  color: white;
 }
 
-h1 { 
-  color: white;
-  font-size: 30px;
-}
-h2 { font-size: 25px;  }
+h1 { font-size: 30px; }
+h2 { color: white; font-size: 25px;  }
 h3 { font-size: 20px; }
+
+header #error { 
+  display: none;
+  margin:0 auto;
+  padding:2px 10px;
+  width: 25%;
+  background-color: lightyellow;
+  color: black;
+  text-align: center;
+}
 
 .small { font-size: 50%; }
 .centered { text-align: center; }
@@ -235,18 +243,16 @@ a:visited { color: white;}
   -webkit-border-radius: 10px;
 }
 #activity {
-  background: url(../img/light-texture-bg.png);
+  background-image: url(../img/light-texture-bg.png);
   float: left;
   width: 40%;
   margin: 20px 5%;
-  background: grey;
 }
 #engagment {
-  background: url(../img/light-texture-bg.png), #3A3A3A;
+  background-image: url(../img/light-texture-bg.png);
   float: right;
   width: 40%;
-  margin: 20px 5%;  
-  background: grey;
+  margin: 20px 5%;
 }
 
 .today, .yesterday {
@@ -257,7 +263,8 @@ a:visited { color: white;}
   margin-left: 7%;
   margin-bottom: 20px;
 }
-.yesterday { color: lightgrey; }
+.today { color: lightyellow;}
+.yesterday { color: yellow; }
 
 #activity_chart, #engagment_chart {
   position: relative;
