@@ -268,8 +268,8 @@ h3 { font-size: 20px; }
 
 #retention_value, #session_length_value {
   position: relative;
-  margin: 20px 10%;
-  width: 10%;
+  margin: 20px 5%;
+  width: 5%;
   float: left;
   font-size: 40px;
   font-weight: bold;
@@ -278,7 +278,7 @@ h3 { font-size: 20px; }
 #retention_chart, #session_chart {
   position: relative;
   margin: 0 5%;
-  width: 60%;
+  width: 70%;
   height: 100px;
   background-color: white;
   text-align: center;
@@ -287,6 +287,13 @@ h3 { font-size: 20px; }
 
 footer {
   text-align: center;
+}
+
+/* for d3  */
+path {
+	stroke: black;
+	stroke-width: 4;
+	fill: none;
 }
 
 /* ==|== non-semantic helper classes ========================================

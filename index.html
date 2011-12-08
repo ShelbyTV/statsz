@@ -56,10 +56,9 @@
 						<span class="small">yesterday: </span>
 					</div>
 					<div id="activity_chart">
-						graph
 					</div>
 					
-					<h2 class="centered">% Growth:</h2>
+					<h2 class="centered">% Growth <small>(weekly)</small>:</h2>
 					<div id="activity_growth" class="growth"></div>
 				</section>
 
@@ -75,17 +74,15 @@
 					<div id="engagment_chart">
 						graph
 					</div>
-					<h2 class="centered">% Growth:</h2>
+					<h2 class="centered">% Growth <small>(weekly)</small>:</h2>
 					<div id="engagment_growth" class="growth"></div>
 				</section>				
 			</div>
 			
 			<div id="retention">
-				<h3 class="centered tight">retention</h3>
+				<h3 class="centered tight">retention (week over week)</h3>
 				<div id="retention_value"></div>
-				<div id="retention_chart">
-					graph
-				</div>
+				<div id="retention_chart"></div>
 			</div>
 
 			<div id="session_length">
@@ -111,10 +108,14 @@
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>');</script>
-
-
+	<!-- <script src="https://raw.github.com/mbostock/d3/master/d3.js"></script> -->
+	<script src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript" charset="utf-8">
+		google.load("visualization", "1", {packages:["corechart"]});
+	</script>
   <!-- scripts concatenated and minified via ant build script-->
   <script defer src="js/libs/graphite.js"></script>
+  <script defer src="js/libs/graphs_google.js"></script>
   <script defer src="js/plugins.js"></script>
   <script defer src="js/script.js"></script>
   <!-- end scripts-->

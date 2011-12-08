@@ -39,13 +39,11 @@ var renderDailyData = function(d){
 };
 
 var renderWeeklyData = function(d){
-  console.log(d.datapoints);
   var target = escape(d.target);
   switch (target){
     case escape('hitcount(stats.activity.weekly.total, "23h")'):
       var thisWeek = d.datapoints[d.datapoints.length - 1][0] || 0;
       var lastWeek = d.datapoints[1][0] || 0;
-      console.log(lastWeek, thisWeek);
       var growth = (((thisWeek - lastWeek) / lastWeek )*100).toFixed(1);
       window.graphiteData.dau_growth = growth;
       $("#activity_growth").append(growth + " %");
