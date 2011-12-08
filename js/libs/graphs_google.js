@@ -38,10 +38,11 @@ $(document).ready(function(){
   	var retention_chart = new google.visualization.LineChart(document.getElementById('retention_chart'));
 
     // get data from graphite, iterate, pass into data via addRow
-    getData('stats.activity.daily', '60min', '-7d', false, 'addRetentionData');
+    /* TODO: CHANGE THIS CALL TO GET CORRECT DATA  */
+    getData('stats.activity.daily', '10min', '-7d', false, 'addRetentionData');
     addRetentionData = function(d){
       d.datapoints.forEach(function(e){
-        retention_data.addRow([e[0]/6]); // dividing by 6 because of interval of 60 min above (data passed to graphite every 10min)
+        retention_data.addRow([e[0]]); // dividing by 6 because of interval of 60 min above (data passed to graphite every 10min)
       });
     	retention_chart.draw(activity_data, retention_options);
     };
