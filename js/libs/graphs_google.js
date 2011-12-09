@@ -12,14 +12,15 @@ $(document).ready(function(){
   	
   	plotActivityChart = function(){
   	  var activity_data = new google.visualization.DataTable();
-    	activity_data.addColumn('string', 'Date');
+    	activity_data.addColumn('datetime', 'Date');
     	activity_data.addColumn('number', 'DAU');
 
       // get data from graphite, iterate, pass into data via addRow
       getData('stats.activity.daily', '10min', '-7d', false, 'addActivityData');
       addActivityData = function(d){
         d.datapoints.forEach(function(e){
-          activity_data.addRow([Date(e[1]),e[0]]);
+          var datetime = new Date(e[1]*1000);
+          activity_data.addRow([datetime,e[0]]);
         });
       	activity_chart.draw(activity_data, activity_options);
       };
@@ -47,14 +48,15 @@ $(document).ready(function(){
     /* TODO: CHANGE THIS CALL TO GET CORRECT DATA  */
     plotRetentionChart = function(){
   	  var retention_data = new google.visualization.DataTable();
-    	retention_data.addColumn('string', 'Date');
+    	retention_data.addColumn('datetime', 'Date');
     	retention_data.addColumn('number', 'Retention');
 
       // get data from graphite, iterate, pass into data via addRow
       getData('stats.activity.daily', '10min', '-7d', false, 'addRetentionData');
       addRetentionData = function(d){
         d.datapoints.forEach(function(e){
-          retention_data.addRow([Date(e[1]),e[0]]); 
+          var datetime = new Date(e[1]*1000);
+          retention_data.addRow([datetime,e[0]]); 
         });
       	retention_chart.draw(retention_data, activity_options);
       };
