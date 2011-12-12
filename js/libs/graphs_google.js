@@ -16,7 +16,7 @@ $(document).ready(function(){
     	activity_data.addColumn('number', 'DAU');
 
       // get data from graphite, iterate, pass into data via addRow
-      getData('stats.activity.daily', '10min', '-7d', false, 'addActivityData');
+      getData('stats.activity.daily.incremental_count', '10min', '-7d', false, 'addActivityData');
       addActivityData = function(d){
         d.datapoints.forEach(function(e){
           var datetime = new Date(e[1]*1000);
@@ -52,7 +52,7 @@ $(document).ready(function(){
     	retention_data.addColumn('number', 'Retention');
 
       // get data from graphite, iterate, pass into data via addRow
-      getData('stats.activity.daily', '10min', '-7d', false, 'addRetentionData');
+      getData('stats.activity.daily.incremental_count', '10min', '-7d', false, 'addRetentionData');
       addRetentionData = function(d){
         d.datapoints.forEach(function(e){
           var datetime = new Date(e[1]*1000);
