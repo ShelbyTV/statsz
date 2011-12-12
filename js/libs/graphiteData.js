@@ -24,7 +24,7 @@ $(document).ready(function(){
 
 /* callback functions run by getData() that render values */
 var renderTodaysDAU = function(d){
-  if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.activity.daily, "11min")') ){ 
+  if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.activity.daily.incremental_count, "11min")') ){ 
     $("#error").text("something is wrong with getting data, sorry dude.").show();
   }
   window.graphiteData.todays_dau = Math.ceil(d.datapoints[d.datapoints.length - 1][0]);
@@ -32,7 +32,7 @@ var renderTodaysDAU = function(d){
 };
 
 var renderYesterdaysDAU = function(d){
-  if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.activity.daily, "10min")') ){ 
+  if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.activity.daily.incremental_count, "10min")') ){ 
     $("#error").text("something is wrong with getting data, sorry dude.").show();
   }
   window.graphiteData.yesterdays_dau = Math.ceil(Math.max.apply(Math,d.datapoints.map(function(o){return o[0];}))) || "bad ubu";
