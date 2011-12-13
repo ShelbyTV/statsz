@@ -288,6 +288,7 @@ a:visited { color: white;}
   height: 150px;
   background-color: grey;
   padding: 10px 0;
+  background-image: url(../img/light-texture-bg.png);
 }
 
 #retention_value, #session_length_value {
@@ -315,6 +316,7 @@ a:visited { color: white;}
   height: 475px;
   background-color: grey;
   padding: 10px 0;
+  background-image: url(../img/light-texture-bg.png);
 }
 #session_chart {
   position: relative;
