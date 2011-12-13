@@ -85,10 +85,9 @@
 
 			<div id="session_length" class="rounded">
 				<h3 class="centered tight">user session info</h3>
-				<div id="session_length_value">
-					0:00
+				<div id="session_chart">
+					<iframe id="session_historgram" src></iframe>
 				</div>
-				<div id="session_chart"></div>
 			</div>
 			
 			
@@ -115,6 +114,7 @@
   <!-- scripts concatenated and minified via ant build script-->
   <script defer src="js/libs/graphiteData.js"></script>
   <script defer src="js/libs/graphs_google.js"></script>
+  <script defer src="js/libs/graphs_cobra.js"></script>
   <script defer src="js/plugins.js"></script>
   <script defer src="js/script.js"></script>
   <!-- end scripts-->
