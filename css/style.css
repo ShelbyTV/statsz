@@ -294,9 +294,9 @@ a:visited { color: white;}
 #retention_value, #session_length_value {
   position: relative;
   margin: 15px 5%;
-  width: 7%;
+  width: 8%;
   float: left;
-  font-size: 55px;
+  font-size: 43px;
   font-weight: bold;
 }
 
