@@ -63,7 +63,7 @@ var renderRetentionData = function(d){
   if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.activity.retention.weekly, "1d")') ){ 
     $("#error").text("something is wrong with getting data, sorry dude.").show();
   }
-  window.graphiteData.retention = d.datapoints[0][0] || 0;
+  window.graphiteData.retention = d.datapoints[d.datapoints.length - 1][0];
   $("#retention_value").text(window.graphiteData.retention + " %");
 };
 
