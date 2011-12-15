@@ -37,28 +37,33 @@ $(document).ready(function(){
     
     /* retention_chart  */
   	var retention_chart = new google.visualization.LineChart(document.getElementById('retention_chart'));
+    var r_width = $("#retention_chart").width();
   	var retention_options = {
-  		width: '100%', height: 100,
+  		width: r_width, height: 100,
   		title: "retention: past 7 days",
   		legend: {position: 'none'},
-  		chartArea: {width: '90%'}
+  		chartArea: {width: '90%'},
+  		lineWidth: 2,
+  		fontSize: 14,
+  		hAxis: {"textPosition": 'out'},
+  		vAxis: {title:'%'}
   	};
   	
-  	// get data from graphite, iterate, pass into data via addRow
-    /* TODO: CHANGE THIS CALL TO GET CORRECT DATA  */
     plotRetentionChart = function(){
   	  var retention_data = new google.visualization.DataTable();
-    	retention_data.addColumn('datetime', 'Date');
+    	retention_data.addColumn('string', 'Date');
     	retention_data.addColumn('number', 'Retention');
 
       // get data from graphite, iterate, pass into data via addRow
-      getData('stats.activity.retention.weekly', '10min', '-7d', false, 'addRetentionData');
+      getData('stats.activity.retention.weekly', '1d', '-7d', false, 'addRetentionData');
       addRetentionData = function(d){
         d.datapoints.forEach(function(e){
           var datetime = new Date(e[1]*1000);
-          retention_data.addRow([datetime,e[0]]); 
+          var month = datetime.getMonth() + 1;
+          var day = datetime.getDate();
+          retention_data.addRow([month+"/"+day,e[0]]); 
         });
-      	retention_chart.draw(retention_data, activity_options);
+      	retention_chart.draw(retention_data, retention_options);
       };
   	};
     
