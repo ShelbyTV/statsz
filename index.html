@@ -43,7 +43,7 @@
     </header>
     <div id="main" role="main">
 			
-			<a href="http://shel.tv/rR8owz" target="_blank">
+			<a href="http://shel.tv/rR8owz" target="_blank" style="color:white;">
 				<h1 id="total_users" class="centered underline">loading data...</h1>	
 			</a>
 			
@@ -91,7 +91,14 @@
 				</div>
 			</div>
 			
+			<div id="virality_section" class="rounded">
+				<h3 class="centered tight">virality coefficient</h3>
+				<div id="virality">
+					<iframe id="virality_chart" src="http://graphite.shelby.tv/graphlot/?&from=-8week&until=-0hour&target=alias(divideSeries(hitcount(stats.app.signups.from_referral,%221d%22),hitcount(stats.activity.daily.final_count,%221d%22)),%22Users%20Acq.%20via%20Sharing%20/%20DAU%20%22)"></iframe>
+				</div>
+			</div>
 			
+						
     </div>
     <footer>
 			<div id="note">

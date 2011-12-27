@@ -329,6 +329,26 @@ a:visited { color: white;}
   float: right;
 }
 
+#virality_section { 
+  margin: 20px 5%;
+  width: 90%;
+  height: 575px;
+  background-color: grey;
+  padding: 10px 0;
+  background-image: url(../img/light-texture-bg.png);
+}
+#virality_chart {
+	position: relative;
+	margin: 0 20%;
+	padding: 10px;
+	width: 60%;
+	height: 500px;
+	background-color: white;
+	text-align: center;
+	float: right;
+}
+
+
 footer {
   color: white;
   text-align: center;
