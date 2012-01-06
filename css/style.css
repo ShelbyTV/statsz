@@ -271,14 +271,13 @@ a:visited { color: white;}
 #activity {
   background-image: url(../img/light-texture-bg.png);
   float: left;
-  width: 45%;
+  width: 44%;
   margin: 20px 0px 10px 5%;
 }
 #engagment {
-  opacity: 0.1;
   background-image: url(../img/light-texture-bg.png);
   float: right;
-  width: 45%;
+  width: 44%;
   margin: 20px 5% 10px 0px;
 }
 
@@ -320,7 +319,7 @@ a:visited { color: white;}
 #retention_value, #session_length_value {
   position: relative;
   margin: 15px 5%;
-  width: 8%;
+  width: 9%;
   float: left;
   font-size: 43px;
   font-weight: bold;

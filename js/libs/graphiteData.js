@@ -16,7 +16,9 @@ $(document).ready(function(){
     getData('stats.app.users.total_count', '10min', '-10min', false, 'renderUserCount');
     getData('stats.activity.daily.incremental_count', '11min', 'midnight+today', false, 'renderTodaysDAU');
     getData('stats.activity.daily.incremental_count', '10min', 'noon+yesterday', 'midnight+today', 'renderYesterdaysDAU');
-    getData('stats.activity.weekly.total', '24h', '-7d', false, 'renderGrowthData');
+    getData('engagement.daily.user_count', '1d', 'midnight+today', false, 'renderTodaysDEU');
+    getData('engagement.daily.user_count', '1d', 'noon+yesterday', 'midnight+today', 'renderYesterdaysDEU');
+    getData('stats.activity.weekly.total', '1d', '-7d', false, 'renderGrowthData');
     getData('stats.activity.retention.weekly', '1d', '-7d', false,'renderRetentionData');
   }, 3000);
 });
@@ -39,6 +41,22 @@ var renderYesterdaysDAU = function(d){
   $("#yesterday_dau_data").text(graphiteData.yesterdays_dau);
 };
 
+var renderTodaysDEU = function(d){
+  if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.engagement.daily.user_count, "1d")') ){ 
+    $("#error").text("something is wrong with getting data, sorry dude.").show();
+  }
+  window.graphiteData.todays_deu = Math.ceil(d.datapoints[d.datapoints.length - 1][0]);
+  $("#today_deu_data").text(graphiteData.todays_deu);  
+};
+
+var renderYesterdaysDEU = function(d){
+  if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.engagement.daily.mean, "1d")') ){ 
+    $("#error").text("something is wrong with getting data, sorry dude.").show();
+  }
+  window.graphiteData.yesterdays_deu = Math.ceil(Math.max.apply(Math,d.datapoints.map(function(o){return o[0];}))) || "bad ubu";
+  $("#yesterday_deu_data").text(graphiteData.yesterdays_deu);
+};
+
 var renderUserCount = function(d){
   if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.app.users.total_count, "10min")') ){ 
     $("#error").text("something is wrong with getting data, sorry dude.").show();
@@ -49,7 +67,7 @@ var renderUserCount = function(d){
 };
 
 var renderGrowthData = function(d){
-  if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.activity.weekly.total, "24h")') ){ 
+  if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.activity.weekly.total, "1d")') ){ 
     $("#error").text("something is wrong with getting data, sorry dude.").show();
   }
   var thisWeek = d.datapoints[d.datapoints.length - 1][0] || 0;
@@ -64,7 +82,7 @@ var renderRetentionData = function(d){
     $("#error").text("something is wrong with getting data, sorry dude.").show();
   }
   window.graphiteData.retention = d.datapoints[d.datapoints.length - 1][0];
-  $("#retention_value").text(window.graphiteData.retention + " %");
+  $("#retention_value").text(window.graphiteData.retention.toFixed(2) + " %");
 };
 
 var getData = function(namespace, interval, from, until, callback){
