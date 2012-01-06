@@ -29,6 +29,12 @@ $(document).ready(function(){
     getData('stats.activity.weekly.total', '1d', '-7d', false, 'renderGrowthData');
     getData('stats.activity.retention.weekly', '1d', '-7d', false,'renderRetentionData');
   }, 3000);
+	
+	$('#engagment h2.legend').click(function(){
+		$('#engagment_chart').fadeToggle("fast", function () {
+			$("#legend").toggle("fast");
+		});
+	});
 });
 
 
@@ -77,7 +83,7 @@ var renderYesterdaysDEU = function(d){
   if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.engagement.daily.threshold.6, "1d")') ){ 
     $("#error").text("something is wrong with getting data, sorry dude.").show();
   }
-  window.graphiteData.yesterdays_deu = Math.ceil(Math.max.apply(Math,d.datapoints.map(function(o){return o[0];}))) || ":(";
+  window.graphiteData.yesterdays_deu = Math.ceil(Math.max.apply(Math,d.datapoints.map(function(o){return o[0];}))) || " n/a";
   $("#yesterday_deu_data").text(graphiteData.yesterdays_deu);
 };
 
@@ -93,7 +99,7 @@ var renderYesterdaysDEUmean = function(d){
   if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.engagement.daily.mean, "1d")') ){ 
     $("#error").text("something is wrong with getting data, sorry dude.").show();
   }
-  window.graphiteData.yesterdays_deu_mean = d.datapoints[d.datapoints.length - 1][0].toFixed(2) || ":(";
+  window.graphiteData.yesterdays_deu_mean = d.datapoints[d.datapoints.length - 1][0].toFixed(2) || " n/a";
   $("#yesterday_deu_data_mean").text(graphiteData.yesterdays_deu);
 };
 

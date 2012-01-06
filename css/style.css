@@ -264,7 +264,7 @@ header #error {
 a:visited { color: white;}
 
 #total_users { margin-top: 10px; margin-bottom: 0px;}
-#daily_info { height: 475px;}
+#daily_info { height: 525px;}
 .rounded {
   -webkit-border-radius: 10px;
 }
@@ -291,7 +291,7 @@ a:visited { color: white;}
 }
 #engagment_values, #activity_values { 
 	height: 160px;
-	margin-top: -40px;
+	margin-top: -10px;
 }
 
 #dau_counts {
@@ -324,7 +324,7 @@ a:visited { color: white;}
   text-align: right;
   width: 75%;
   height: 70%;
-  margin-left: 7%;
+  margin-left: -30px;
   margin-bottom: 20px;
 }
 #todays_dau.today, #todays_wau.today , #yesterdays_dau.yesterday, #yesterdays_wau.yesterday {
@@ -332,11 +332,24 @@ a:visited { color: white;}
   text-align: right;
   width: 75%;
   height: 70%;
-  margin-left: 7%;
+  margin-left: -30px;
   margin-bottom: 20px;
 }
 .today { color: lightyellow;}
 .yesterday { color: yellow; }
+
+#legend { 
+	display: none;
+	width: 90%;
+	height: 200px;
+	text-align: center;
+	font-weight:bold;
+}
+
+#legend table{
+	text-align: right;
+	margin: 0px auto;
+}
 
 #activity_chart, #engagment_chart {
   position: relative;
@@ -347,7 +360,7 @@ a:visited { color: white;}
   text-align: center;
 }
 #engagment_chart { 
-	height: 200px;
+	height: 225px;
 	margin: 12px 4%;
 }
 .growth {
