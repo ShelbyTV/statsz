@@ -260,6 +260,7 @@ header #error {
 .underline {
   text-decoration: underline;
 }
+.legend { cursor: help;}
 
 a:visited { color: white;}
 
