@@ -225,7 +225,7 @@ header #links {
   display: block;
   margin:0 100px 0 auto;
   padding:2px 10px;
-  width: 25%;
+  width: 30%;
 	background: grey;
 	box-shadow: 0px 0px 5px #999;
 	border-radius: 0px 0px 5px 5px;
@@ -264,7 +264,7 @@ header #error {
 a:visited { color: white;}
 
 #total_users { margin-top: 10px; margin-bottom: 0px;}
-#daily_info { height: 450px;}
+#daily_info { height: 475px;}
 .rounded {
   -webkit-border-radius: 10px;
 }
@@ -289,6 +289,52 @@ a:visited { color: white;}
   margin-left: 7%;
   margin-bottom: 20px;
 }
+#engagment_values, #activity_values { 
+	height: 160px;
+	margin-top: -40px;
+}
+
+#dau_counts {
+	float: left;
+	margin-left: 6%;
+	position: relative;
+	width: 44%;
+}
+#wau_counts {
+	float: right;
+	margin-right: 6%;
+	position: relative;
+	width: 44%;
+}
+
+#deu_counts {
+	float: left;
+	margin-left: 6%;
+	position: relative;
+	width: 44%;
+}
+#deu_means {
+	float: right;
+	margin-right: 6%;
+	position: relative;
+	width: 44%;
+}
+#todays_deu.today, #todays_deu_mean.today , #yesterdays_deu.yesterday, #yesterdays_deu_mean.yesterday {
+  font-size: 30px;
+  text-align: right;
+  width: 75%;
+  height: 70%;
+  margin-left: 7%;
+  margin-bottom: 20px;
+}
+#todays_dau.today, #todays_wau.today , #yesterdays_dau.yesterday, #yesterdays_wau.yesterday {
+  font-size: 30px;
+  text-align: right;
+  width: 75%;
+  height: 70%;
+  margin-left: 7%;
+  margin-bottom: 20px;
+}
 .today { color: lightyellow;}
 .yesterday { color: yellow; }
 
@@ -299,6 +345,10 @@ a:visited { color: white;}
   height: 100px;
   background-color: white;
   text-align: center;
+}
+#engagment_chart { 
+	height: 200px;
+	margin: 12px 4%;
 }
 .growth {
   font-size: 40px;

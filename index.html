@@ -56,12 +56,26 @@
 			
 			<div id="daily_info">
 				<section id="activity" class="rounded">
-					<h2 class="centered">daily active users</h2>
-					<div id="todays_dau" class="today bold">
-						<span class="small">today: </span> <span id="today_dau_data"></span>
-					</div>
-					<div id="yesterdays_dau" class="yesterday">
-						<span class="small">yesterday: </span> <span id="yesterday_dau_data"></span>
+					<h2 class="centered">daily/weekly activity</h2>
+					<div id="activity_values">
+						<section id="dau_counts">
+							<h2 class="centered">dau count</h2>
+								<div id="todays_dau" class="today bold">
+									<span class="small">today: </span> <span id="today_dau_data"></span>
+								</div>
+								<div id="yesterdays_dau" class="yesterday">
+									<span class="small">yesterday: </span> <span id="yesterday_dau_data"></span>
+								</div>				
+						</section>
+						<section id="wau_counts">
+							<h2 class="centered">wau count</h2>
+							<div id="todays_deu_mean" class="today bold">
+								<span class="small">this week: </span> <span id="today_wau_data"></span>
+							</div>
+							<div id="yesterdays_deu_mean" class="yesterday">
+								<span class="small">last week: </span> <span id="yesterday_wau_data"></span>
+							</div>						
+						</section>
 					</div>
 					<div id="activity_chart">
 					</div>
@@ -71,17 +85,32 @@
 				</section>
 
 				<section id="engagment" class="rounded">
-					<h2 class="centered">daily engaged users</h2>
-					<!--  TODO: Run JS function to get latest count and append  -->
-					<div id="todays_deu" class="today bold">
-						<span class="small">today: </span> <span id="today_deu_data"></span>
+					<h2 class="centered">daily engagement</h2>
+					<div id="engagment_values">
+						<section id="deu_counts">
+							<h2 class="centered">user count <span style="font-size:15px;">(threshold >= 6)</small></h2>
+							<div id="todays_deu" class="today bold">
+								<span class="small">today: </span> <span id="today_deu_data"></span>
+							</div>
+							<div id="yesterdays_deu" class="yesterday">
+								<span class="small">yesterday: </span> <span id="yesterday_deu_data"></span>
+							</div>						
+						</section>
+						<section id="deu_means">
+							<h2 class="centered">mean daily score</h2>
+							<div id="todays_deu_mean" class="today bold">
+								<span class="small">today: </span> <span id="today_deu_data_mean"></span>
+							</div>
+							<div id="yesterdays_deu_mean" class="yesterday">
+								<span class="small">yesterday: </span> <span id="yesterday_deu_data_mean"></span>
+							</div>						
+						</section>
 					</div>
-					<div id="yesterdays_deu" class="yesterday">
-						<span class="small">yesterday: </span> <span id="yesterday_deu_data"></span>
-					</div>
-					<div id="engagment_chart">graph</div>
+					<img id="engagment_chart" src="http://graphite.shelby.tv/render?target=group(alias(hitcount(stats.engagement.daily.threshold.6,%221d%22),%22users%20above%20engagment%20score%206%22),alias(hitcount(stats.engagement.daily.mean,%221d%22),%22mean%20engagement%20score%22))&from=-7d&lineMode=staircase&lineWidth=4&yMin=0&minorGridLineColor=darkgrey&width=650&height=200&fontSize=12"/>
+					<!--
 					<h2 class="centered">% growth <small>(weekly)</small>:</h2>
 					<div id="engagment_growth" class="growth"></div>
+					-->
 				</section>				
 			</div>
 			
