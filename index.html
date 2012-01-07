@@ -89,7 +89,7 @@
 					<h2 class="centered legend">daily engagement <span style="font-size: 12px;">(?)</a></h2>
 					<div id="engagment_values">
 						<section id="deu_counts">
-							<h2 class="centered">user count <span style="font-size:15px;">(threshold > 7)</small></h2>
+							<h2 class="centered">user count <span style="font-size:15px;">(threshold > 8)</small></h2>
 							<div id="todays_deu" class="today bold">
 								<span class="small">yesterday: </span> <span id="today_deu_data"></span>
 							</div>
@@ -107,7 +107,7 @@
 							</div>						
 						</section>
 					</div>
-					<img id="engagment_chart" src="http://graphite.shelby.tv/render?target=group(alias(hitcount(stats.engagement.daily.threshold.7,%221d%22),%22users%20above%20engagment%20score%206%22),alias(hitcount(stats.engagement.daily.mean,%221d%22),%22mean%20engagement%20score%22))&from=-7d&lineMode=staircase&lineWidth=4&yMin=0&minorGridLineColor=darkgrey&width=650&height=225&fontSize=12"/>
+					<img id="engagment_chart" src="http://graphite.shelby.tv/render?target=group(alias(hitcount(stats.engagement.daily.threshold.8,%221d%22),%22users%20above%20engagment%20score%206%22),alias(hitcount(stats.engagement.daily.mean,%221d%22),%22mean%20engagement%20score%22))&from=-7d&lineMode=staircase&lineWidth=4&yMin=0&minorGridLineColor=darkgrey&width=650&height=225&fontSize=12"/>
 					<div id="legend">
 						<table border="0" cellspacing="1" cellpadding="1">
 							<tr><th>action</th><th>score</th></tr>
@@ -119,7 +119,7 @@
 							<tr><td>add new service</td><td>6</td></tr>
 							<tr><td>use bkmklt</td><td>5</td></tr>
 						</table>
-						<p>these are the current scores, the threshold to what we call "engaged" is currently a total daily score of 7</p>
+						<p>these are the current scores, the threshold to what we call "engaged" is currently a total daily score of 8</p>
 					</div>
 					<!--
 					<h2 class="centered">% growth <small>(weekly)</small>:</h2>
