@@ -23,9 +23,9 @@ $(document).ready(function(){
     getData('stats.activity.weekly.total', '1d', 'noon+yesterday', false, 'renderTodaysWAU');
     getData('stats.activity.weekly.total', '1d', '-2d', 'midnight+today', 'renderYesterdaysWAU');
     getData('stats.engagement.daily.threshold.8', '1d', 'midnight+today', false, 'renderTodaysDEU');
-    getData('stats.engagement.daily.threshold.8', '1d', 'noon+yesterday', 'midnight+today', 'renderYesterdaysDEU');
+    getData('stats.engagement.daily.threshold.8', '1d', '-2d', false, 'renderYesterdaysDEU');
     getData('stats.engagement.daily.mean', '1d', 'midnight+today', false, 'renderTodaysDEUmean');
-    getData('stats.engagement.daily.mean', '1d', 'noon+yesterday', 'midnight+today', 'renderYesterdaysDEUmean');
+    getData('stats.engagement.daily.mean', '1d', '-2d', false, 'renderYesterdaysDEUmean');
     getData('stats.activity.weekly.total', '1d', '-7d', false, 'renderGrowthData');
     getData('stats.activity.retention.weekly', '1d', '-7d', false,'renderRetentionData');
   }, 3000);
@@ -75,7 +75,7 @@ var renderTodaysDEU = function(d){
   if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.engagement.daily.threshold.8, "1d")') ){ 
     $("#error").text("something is wrong with getting data, sorry dude.").show();
   }
-  window.graphiteData.todays_deu = Math.ceil(d.datapoints[d.datapoints.length - 1][0]);
+  window.graphiteData.todays_deu = Math.floor(d.datapoints[d.datapoints.length - 1][0]);
   $("#today_deu_data").text(graphiteData.todays_deu);  
 };
 
@@ -83,7 +83,7 @@ var renderYesterdaysDEU = function(d){
   if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.engagement.daily.threshold.8, "1d")') ){ 
     $("#error").text("something is wrong with getting data, sorry dude.").show();
   }
-  window.graphiteData.yesterdays_deu = Math.ceil(Math.max.apply(Math,d.datapoints.map(function(o){return o[0];}))) || " n/a";
+  window.graphiteData.yesterdays_deu = Math.floor(d.datapoints[d.datapoints.length - 2][0]);
   $("#yesterday_deu_data").text(graphiteData.yesterdays_deu);
 };
 
@@ -91,7 +91,7 @@ var renderTodaysDEUmean = function(d){
   if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.engagement.daily.mean, "1d")') ){ 
     $("#error").text("something is wrong with getting data, sorry dude.").show();
   }
-  window.graphiteData.todays_deu_mean = Math.ceil(d.datapoints[d.datapoints.length - 1][0]);
+  window.graphiteData.todays_deu_mean = d.datapoints[d.datapoints.length - 1][0].toFixed(1);
   $("#today_deu_data_mean").text(graphiteData.todays_deu_mean);  
 };
 
@@ -99,8 +99,8 @@ var renderYesterdaysDEUmean = function(d){
   if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.engagement.daily.mean, "1d")') ){ 
     $("#error").text("something is wrong with getting data, sorry dude.").show();
   }
-  window.graphiteData.yesterdays_deu_mean = d.datapoints[d.datapoints.length - 1][0].toFixed(2) || " n/a";
-  $("#yesterday_deu_data_mean").text(graphiteData.yesterdays_deu);
+  window.graphiteData.yesterdays_deu_mean = d.datapoints[d.datapoints.length - 2][0].toFixed(1);
+  $("#yesterday_deu_data_mean").text(graphiteData.yesterdays_deu_mean);
 };
 
 
@@ -141,7 +141,6 @@ var getData = function(namespace, interval, from, until, callback){
   else {
     url = "http://graphite.shelby.tv/render?target=hitcount(" + namespace + ",%22"+ interval+"%22)&from="+ from +"&format=json&jsonp=" + callback;
   }
-  
   $(document).ready(function(){
     $.ajax({url: url, dataType:"jsonp"});
   });
