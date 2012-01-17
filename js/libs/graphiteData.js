@@ -22,8 +22,8 @@ $(document).ready(function(){
     getData('stats.activity.daily.incremental_count', '10min', 'noon+yesterday', 'midnight+today', 'renderYesterdaysDAU');
     getData('stats.activity.weekly.total', '1d', 'noon+yesterday', false, 'renderTodaysWAU');
     getData('stats.activity.weekly.total', '1d', '-2d', 'midnight+today', 'renderYesterdaysWAU');
-    getData('stats.engagement.daily.threshold.8', '1d', 'midnight+today', false, 'renderTodaysDEU');
-    getData('stats.engagement.daily.threshold.8', '1d', '-2d', false, 'renderYesterdaysDEU');
+    getData('stats.engagement.daily.threshold.15', '1d', 'midnight+today', false, 'renderTodaysDEU');
+    getData('stats.engagement.daily.threshold.15', '1d', '-2d', false, 'renderYesterdaysDEU');
     getData('stats.engagement.daily.mean', '1d', 'midnight+today', false, 'renderTodaysDEUmean');
     getData('stats.engagement.daily.mean', '1d', '-2d', false, 'renderYesterdaysDEUmean');
     getData('stats.activity.weekly.total', '1d', '-7d', false, 'renderGrowthData');
@@ -72,7 +72,7 @@ var renderYesterdaysWAU = function(d){
 };
 
 var renderTodaysDEU = function(d){
-  if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.engagement.daily.threshold.8, "1d")') ){ 
+  if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.engagement.daily.threshold.15, "1d")') ){ 
     $("#error").text("something is wrong with getting data, sorry dude.").show();
   }
   window.graphiteData.todays_deu = Math.floor(d.datapoints[d.datapoints.length - 1][0]);
@@ -80,7 +80,7 @@ var renderTodaysDEU = function(d){
 };
 
 var renderYesterdaysDEU = function(d){
-  if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.engagement.daily.threshold.8, "1d")') ){ 
+  if (d.datapoints.length == 0 || escape(d.target) != escape('hitcount(stats.engagement.daily.threshold.15, "1d")') ){ 
     $("#error").text("something is wrong with getting data, sorry dude.").show();
   }
   window.graphiteData.yesterdays_deu = Math.floor(d.datapoints[d.datapoints.length - 2][0]);
